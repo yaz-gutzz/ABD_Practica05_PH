@@ -41,7 +41,7 @@ Se generaron 340 pacientes varones
 respetando el rango de edad establecido.
 
 ## Evidencia
-Ver archivo `evidencia.png`.
+Ver archivo `test08.png`.
 
 ## Observaciones
 El procedimiento respetó simultáneamente

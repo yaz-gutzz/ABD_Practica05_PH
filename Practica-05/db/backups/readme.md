@@ -17,7 +17,7 @@ Un **backup** es una copia de seguridad de la base de datos que permite restaura
 
 ---
 
-## 🎯 Objetivo
+##  Objetivo
 
 - Garantizar la integridad de la información.
 - Permitir la recuperación ante errores.
@@ -26,7 +26,7 @@ Un **backup** es una copia de seguridad de la base de datos que permite restaura
 
 ---
 
-## 📂 Estructura del Proyecto
+##  Estructura del Proyecto
 
 > ABD_PRACTICA05_PH  
 >| - Practica-05  
@@ -44,7 +44,7 @@ Un **backup** es una copia de seguridad de la base de datos que permite restaura
 ---
 
 
-## 🛠️ Tipos de Backups Incluidos
+##  Tipos de Backups Incluidos
 
 ### 🔹 Respaldo Estructural
 Contiene:

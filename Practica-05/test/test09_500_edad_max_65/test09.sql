@@ -27,6 +27,7 @@ CALL sp_poblar_pacientes_goog(
 SELECT COUNT(*) AS total_pacientes
 FROM tbb_pacientes;
 
+
 -- Validación rango de edad
 SELECT 
     MIN(TIMESTAMPDIFF(YEAR, fecha_nacimiento, CURDATE())) AS edad_minima,

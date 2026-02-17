@@ -12,9 +12,9 @@ Cada usuario tiene permisos únicamente sobre las tablas necesarias para su oper
 
 ---
 
-# 👥 Usuarios y Áreas
+# 👥 Roles y Áreas
 
-| Usuario      | Área                  | Alcance |
+| Roles      | Área                  | Alcance |
 |--------------|-----------------------|----------|
 | ge_user      | Gerencia              | Gestión administrativa estratégica |
 | hr_user      | Recursos Humanos      | Gestión de personal |

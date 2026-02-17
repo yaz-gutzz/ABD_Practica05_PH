@@ -37,7 +37,7 @@ Todos los registros generados corresponden
 al estatus médico "Coma".
 
 ## Evidencia
-Ver archivo `evidencia.png`.
+Ver archivo `test12.png`.
 
 ## Observaciones
 El procedimiento respetó correctamente

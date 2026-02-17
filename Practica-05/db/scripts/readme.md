@@ -165,4 +165,4 @@ Permiso:
 - SELECT sobre toda la base de datos
 
 ```sql
-GRANT SELECT ON hospital_230142.* TO 'developer'@'%';
+GRANT SELECT ON hospital_matricula.* TO 'developer'@'%';

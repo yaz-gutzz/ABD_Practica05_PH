@@ -1,4 +1,4 @@
-# Respaldo Post Poblacion
+# Respaldo Post Población
 
 Esta sección describe el propósito y contenido de cada archivo de respaldo incluido en el proyecto.
 

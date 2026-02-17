@@ -16,7 +16,8 @@ Gráfica que muestra la distribución de pacientes según su estado (Vivo, Falle
 
 ![Distribución por Estado Vital](./images/distribucion_estado_vital.png)
 
----
+
+
 
 ### 2. Proporción por Género
 

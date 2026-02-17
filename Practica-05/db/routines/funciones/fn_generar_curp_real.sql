@@ -16,3 +16,4 @@ BEGIN
         SUBSTRING(REPLACE(UUID(),'-',''),1,6)
     );
 END
+

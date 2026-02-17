@@ -38,7 +38,6 @@ Este conjunto de funciones SQL en MySQL fue creado para automatizar la **generac
 - **Algoritmo:** Extrae 1 letra de cada apellido y nombre + fecha + género + componente aleatorio
 - **Ejemplo de salida:** "GMLC850315HDFJWQ01"
 
----
 
 ### 3.  Generación de Edad y Género
 
@@ -53,7 +52,7 @@ Este conjunto de funciones SQL en MySQL fue creado para automatizar la **generac
 - **Descripción:** Genera un género de forma aleatoria
 - **Retorna:** VARCHAR(3) - "M" (Masculino) o "F" (Femenino)
 
----
+
 
 ### 4.  Generación de Grupo Sanguíneo
 
@@ -63,7 +62,7 @@ Este conjunto de funciones SQL en MySQL fue creado para automatizar la **generac
 - **Retorna:** VARCHAR(5) - Grupo sanguíneo válido
 - **Valores posibles:** O+, O-, A+, A-, B+, B-, AB+, AB-
 
----
+
 
 ### 5.  Generación de Estatus Médico y Estatus de Vida
 
@@ -73,7 +72,6 @@ Este conjunto de funciones SQL en MySQL fue creado para automatizar la **generac
 - **Retorna:** VARCHAR(50) - Estado de salud o condición médica
 - **Ejemplos:** "Estable", "Crítico", "Recuperándose", etc.
 
----
 
 ### 6.  Generación de Fecha de Última Cita
 
@@ -83,9 +81,9 @@ Este conjunto de funciones SQL en MySQL fue creado para automatizar la **generac
 - **Retorna:** DATETIME - Fecha y hora de última consulta
 - **Rango:** Fechas recientes (últimos 6-12 meses)
 
----
 
-### 7. 🌍 Generación de País de Origen
+
+### 7.  Generación de País de Origen
 
 #### `fn_pais_origen()`
 - **Archivo:** `fn_pais_origen.sql`
@@ -93,9 +91,9 @@ Este conjunto de funciones SQL en MySQL fue creado para automatizar la **generac
 - **Retorna:** VARCHAR(50) - Nombre del país
 - **Nota:** Incluye principalmente países hispanohablantes
 
----
 
-### 8. 👔 Generación de Título de Cortesía
+
+### 8.  Generación de Título de Cortesía
 
 #### `fn_titulo_cortesina()`
 - **Archivo:** `fn_titulo_cortesina.sql`
@@ -103,7 +101,7 @@ Este conjunto de funciones SQL en MySQL fue creado para automatizar la **generac
 - **Retorna:** VARCHAR(10) - Título respetoso
 - **Valores posibles:** "Sr.", "Sra.", "Dra.", "Dr.", etc.
 
----
+
 
 ## 🔧 Características Técnicas
 
@@ -137,9 +135,9 @@ SELECT fn_generar_grupo_sanguineo();
 -- );
 ```
 
----
 
-## 📊 Integración con el Procedimiento Principal
+
+##  Integración con el Procedimiento Principal
 
 Estas funciones son consumidas por el procedimiento almacenado **`sp_poblar_pacientes`** ubicado en la carpeta `procedimiento/`, el cual:
 
@@ -148,7 +146,6 @@ Estas funciones son consumidas por el procedimiento almacenado **`sp_poblar_paci
 3. Realiza inserciones en las tablas correspondientes
 4. Maneja transacciones para garantizar integridad
 
----
 
 ## 📝 Notas Importantes
 
@@ -160,7 +157,7 @@ Estas funciones son consumidas por el procedimiento almacenado **`sp_poblar_paci
 
 ---
 
-## 🚀 Próximos Pasos
+##  Próximos Pasos
 
 Para utilizar estas funciones en la población de datos:
 

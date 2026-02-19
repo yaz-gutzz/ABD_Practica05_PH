@@ -31,9 +31,6 @@ La prueba fue exitosa.
 Todos los registros generados corresponden
 al sexo femenino.
 
-## Evidencia
-Ver archivo `test07.png`.
-
 ## Observaciones
 El procedimiento respetó correctamente
 el parámetro de filtrado por sexo.

@@ -7,10 +7,6 @@ Prueba de Naturaleza
 Validar que el procedimiento genere
 500 pacientes cuya edad no exceda los 65 años.
 
-## Preparación del Entorno
-Se limpiaron las tablas antes de la ejecución
-para garantizar independencia de la prueba.
-
 ## Script Ejecutado
 
 CALL sp_poblar_pacientes_goog(
@@ -35,9 +31,6 @@ CALL sp_poblar_pacientes_goog(
 ## Resultado Obtenido
 La prueba fue exitosa.
 Ningún paciente supera los 65 años.
-
-## Evidencia
-Ver archivo `test09.png`.
 
 ## Observaciones
 El parámetro de edad máxima fue respetado correctamente.

@@ -8,10 +8,6 @@ Validar que el procedimiento permita generar
 340 pacientes de género masculino
 con edades entre 20 y 30 años.
 
-## Preparación del Entorno
-Se limpiaron las tablas antes de la ejecución
-para garantizar independencia de la prueba.
-
 ## Script Ejecutado
 
 CALL sp_poblar_pacientes_goog(
@@ -39,9 +35,6 @@ CALL sp_poblar_pacientes_goog(
 La prueba se ejecutó exitosamente.
 Se generaron 340 pacientes varones
 respetando el rango de edad establecido.
-
-## Evidencia
-Ver archivo `test08.png`.
 
 ## Observaciones
 El procedimiento respetó simultáneamente

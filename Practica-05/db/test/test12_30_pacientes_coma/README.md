@@ -7,10 +7,6 @@ Prueba de Naturaleza
 Validar que el procedimiento permita generar
 30 pacientes con estatus médico "Coma".
 
-## Preparación del Entorno
-Se limpiaron las tablas antes de la ejecución
-para garantizar independencia de la prueba.
-
 ## Script Ejecutado
 
 CALL sp_poblar_pacientes_goog(
@@ -35,9 +31,6 @@ CALL sp_poblar_pacientes_goog(
 La prueba fue exitosa.
 Todos los registros generados corresponden
 al estatus médico "Coma".
-
-## Evidencia
-Ver archivo `test12.png`.
 
 ## Observaciones
 El procedimiento respetó correctamente

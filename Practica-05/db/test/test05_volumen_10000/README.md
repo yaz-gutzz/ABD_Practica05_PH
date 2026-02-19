@@ -8,10 +8,6 @@ Evaluar el rendimiento del procedimiento
 `sp_poblar_pacientes_goog` ante un volumen
 masivo de 10000 registros.
 
-## Preparación del Entorno
-Se reiniciaron las tablas antes de la ejecución
-para garantizar independencia de la prueba.
-
 ## Script Ejecutado
 
 CALL sp_poblar_pacientes_goog(
@@ -39,8 +35,6 @@ manteniendo la integridad referencial.
 ## Tiempo de Ejecución
 Ver resultado mostrado en la evidencia.
 
-## Evidencia
-Ver archivo `test05.png`.
 
 ## Observaciones
 El procedimiento respondió adecuadamente

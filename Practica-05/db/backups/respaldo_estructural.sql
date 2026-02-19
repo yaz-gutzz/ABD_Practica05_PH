@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: localhost    Database: abd_practica05_ph
+-- Host: localhost    Database: hospital_230142
 -- ------------------------------------------------------
--- Server version	8.0.34
+-- Server version	8.0.37
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -176,8 +176,115 @@ CREATE TABLE `tbb_pacientes` (
   `estatus` bit(1) NOT NULL DEFAULT b'1',
   UNIQUE KEY `ID_UNIQUE` (`ID`),
   CONSTRAINT `fk_persona_fisica` FOREIGN KEY (`ID`) REFERENCES `tbb_personas_fisicas` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000002 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1016164 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tbb_pacientes_AFTER_INSERT` AFTER INSERT ON `tbb_pacientes` FOR EACH ROW BEGIN
+    INSERT INTO tbi_bitacora
+    (
+        Nombre_Tabla,
+        Usuario,
+        Operacion,
+        Descripcion
+    )
+    VALUES
+    (
+        'tbb_pacientes',
+        CURRENT_USER(),
+        'insert',
+        CONCAT('Se insert� paciente ID: ', NEW.ID)
+    );
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tbb_pacientes_BEFORE_UPDATE` BEFORE UPDATE ON `tbb_pacientes` FOR EACH ROW BEGIN
+    SET NEW.fecha_actualizacion = NOW();
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tbb_pacientes_AFTER_UPDATE` AFTER UPDATE ON `tbb_pacientes` FOR EACH ROW BEGIN
+    INSERT INTO tbi_bitacora
+    (
+        Nombre_Tabla,
+        Usuario,
+        Operacion,
+        Descripcion
+    )
+    VALUES
+    (
+        'tbb_pacientes',
+        CURRENT_USER(),
+        'update',
+        CONCAT('Se actualiz� paciente ID: ', NEW.ID)
+    );
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tbb_pacientes_AFTER_DELETE` AFTER DELETE ON `tbb_pacientes` FOR EACH ROW BEGIN
+    INSERT INTO tbi_bitacora
+    (
+        Nombre_Tabla,
+        Usuario,
+        Operacion,
+        Descripcion
+    )
+    VALUES
+    (
+        'tbb_pacientes',
+        CURRENT_USER(),
+        'delete',
+        CONCAT('Se elimin� paciente ID: ', OLD.ID)
+    );
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `tbb_personal`
@@ -226,8 +333,115 @@ CREATE TABLE `tbb_personas` (
   `estatus` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `rfc` (`rfc`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000002 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1016164 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tbb_personas_AFTER_INSERT` AFTER INSERT ON `tbb_personas` FOR EACH ROW BEGIN
+    INSERT INTO tbi_bitacora
+    (
+        Nombre_Tabla,
+        Usuario,
+        Operacion,
+        Descripcion
+    )
+    VALUES
+    (
+        'tbb_personas',
+        CURRENT_USER(),
+        'insert',
+        CONCAT('Se ha insertado una nueva persona con el ID: ', NEW.ID)
+    );
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tbb_personas_BEFORE_UPDATE` BEFORE UPDATE ON `tbb_personas` FOR EACH ROW BEGIN
+    SET NEW.fecha_actualizacion = NOW();
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tbb_personas_AFTER_UPDATE` AFTER UPDATE ON `tbb_personas` FOR EACH ROW BEGIN
+    INSERT INTO tbi_bitacora
+    (
+        Nombre_Tabla,
+        Usuario,
+        Operacion,
+        Descripcion
+    )
+    VALUES
+    (
+        'tbb_personas',
+        CURRENT_USER(),
+        'update',
+        CONCAT('Se han actualizado los datos de la persona con el ID: ', NEW.ID)
+    );
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tbb_personas_AFTER_DELETE` AFTER DELETE ON `tbb_personas` FOR EACH ROW BEGIN
+    INSERT INTO tbi_bitacora
+    (
+        Nombre_Tabla,
+        Usuario,
+        Operacion,
+        Descripcion
+    )
+    VALUES
+    (
+        'tbb_personas',
+        CURRENT_USER(),
+        'delete',
+        CONCAT('Se borr� la persona con el ID: ', OLD.ID)
+    );
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `tbb_personas_fisicas`
@@ -252,8 +466,115 @@ CREATE TABLE `tbb_personas_fisicas` (
   UNIQUE KEY `ID_UNIQUE` (`ID`),
   UNIQUE KEY `curp` (`curp`),
   CONSTRAINT `fk_persona` FOREIGN KEY (`ID`) REFERENCES `tbb_personas` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000002 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1016164 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tbb_personas_fisicas_AFTER_INSERT` AFTER INSERT ON `tbb_personas_fisicas` FOR EACH ROW BEGIN
+    INSERT INTO tbi_bitacora
+    (
+        Nombre_Tabla,
+        Usuario,
+        Operacion,
+        Descripcion
+    )
+    VALUES
+    (
+        'tbb_personas_fisicas',
+        CURRENT_USER(),
+        'insert',
+        CONCAT('Se insert� persona f�sica ID: ', NEW.ID)
+    );
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tbb_personas_fisicas_BEFORE_UPDATE` BEFORE UPDATE ON `tbb_personas_fisicas` FOR EACH ROW BEGIN
+    SET NEW.fecha_actualizacion = NOW();
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tbb_personas_fisicas_AFTER_UPDATE` AFTER UPDATE ON `tbb_personas_fisicas` FOR EACH ROW BEGIN
+    INSERT INTO tbi_bitacora
+    (
+        Nombre_Tabla,
+        Usuario,
+        Operacion,
+        Descripcion
+    )
+    VALUES
+    (
+        'tbb_personas_fisicas',
+        CURRENT_USER(),
+        'update',
+        CONCAT('Se actualiz� persona f�sica ID: ', NEW.ID)
+    );
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tbb_personas_fisicas_AFTER_DELETE` AFTER DELETE ON `tbb_personas_fisicas` FOR EACH ROW BEGIN
+    INSERT INTO tbi_bitacora
+    (
+        Nombre_Tabla,
+        Usuario,
+        Operacion,
+        Descripcion
+    )
+    VALUES
+    (
+        'tbb_personas_fisicas',
+        CURRENT_USER(),
+        'delete',
+        CONCAT('Se elimin� persona f�sica ID: ', OLD.ID)
+    );
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `tbb_personas_morales`
@@ -690,7 +1011,7 @@ CREATE TABLE `tbi_bitacora` (
   `Descripcion` text NOT NULL,
   `Fecha_hora` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3000002 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3048490 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -703,6 +1024,18 @@ SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `vw_grants_por_roles` AS SELECT 
  1 AS `linea`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `vw_reporte_privilegios`
+--
+
+DROP TABLE IF EXISTS `vw_reporte_privilegios`;
+/*!50001 DROP VIEW IF EXISTS `vw_reporte_privilegios`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `vw_reporte_privilegios` AS SELECT 
+ 1 AS `mensaje`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -720,8 +1053,875 @@ SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = @saved_cs_client;
 
 --
--- Dumping events for database 'abd_practica05_ph'
+-- Dumping events for database 'hospital_230142'
 --
+
+--
+-- Dumping routines for database 'hospital_230142'
+--
+/*!50003 DROP FUNCTION IF EXISTS `fn_apellido_real` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_apellido_real`() RETURNS varchar(50) CHARSET utf8mb4
+    READS SQL DATA
+BEGIN
+    DECLARE v_apellido VARCHAR(50);
+
+    SELECT apellido INTO v_apellido
+    FROM cat_apellidos
+    ORDER BY RAND()
+    LIMIT 1;
+
+    RETURN v_apellido;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_clasificar_etapa_vida` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_clasificar_etapa_vida`(p_edad INT) RETURNS varchar(50) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+    IF p_edad < 1 THEN
+        RETURN 'Neonato';
+
+    ELSEIF p_edad BETWEEN 1 AND 4 THEN
+        RETURN 'Infante';
+
+    ELSEIF p_edad BETWEEN 5 AND 8 THEN
+        RETURN 'Ninez';
+
+    ELSEIF p_edad BETWEEN 9 AND 12 THEN
+        RETURN 'Preadolecente';
+
+    ELSEIF p_edad BETWEEN 13 AND 18 THEN
+        RETURN 'Adolecente';
+
+    ELSEIF p_edad BETWEEN 19 AND 22 THEN
+        RETURN 'Joven';
+
+    ELSEIF p_edad BETWEEN 23 AND 39 THEN
+        RETURN 'Adulto Joven';
+
+    ELSEIF p_edad BETWEEN 40 AND 60 THEN
+        RETURN 'Adulto';
+
+    ELSE
+        RETURN 'Adulto Mayor';
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_estatus_medico` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_estatus_medico`(p_estatus VARCHAR(50)) RETURNS varchar(50) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+    
+    IF p_estatus IS NOT NULL AND 
+       p_estatus IN ('Estable',
+                     'En Observacion',
+                     'Coma',
+                     'Estado Vegetativo',
+                     'Cuidados Paliativos') THEN
+        RETURN p_estatus;
+    END IF;
+
+    
+    RETURN ELT(FLOOR(1 + RAND()*5),
+        'Estable',
+        'En Observacion',
+        'Coma',
+        'Estado Vegetativo',
+        'Cuidados Paliativos'
+    );
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_estatus_vida` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_estatus_vida`(p_estatus VARCHAR(20)) RETURNS varchar(20) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+    IF p_estatus IS NOT NULL 
+       AND p_estatus IN ('Vivo','Finado') THEN
+        RETURN p_estatus;
+    END IF;
+
+    RETURN ELT(FLOOR(1 + RAND()*2),
+        'Vivo',
+        'Finado'
+    );
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_es_pediatrico` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_es_pediatrico`(p_edad INT) RETURNS varchar(3) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+    IF p_edad BETWEEN 0 AND 17 THEN
+        RETURN 'Si';
+    ELSE
+        RETURN 'No';
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_fecha_ultima_cita` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_fecha_ultima_cita`() RETURNS datetime
+    DETERMINISTIC
+BEGIN
+    RETURN DATE_SUB(
+        NOW(),
+        INTERVAL FLOOR(RAND()*365) DAY
+    ) + INTERVAL FLOOR(RAND()*86400) SECOND;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_generar_curp_real` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_generar_curp_real`(
+    p_nombre VARCHAR(50),
+    p_apellido_p VARCHAR(50),
+    p_apellido_m VARCHAR(50),
+    p_genero VARCHAR(3),
+    p_fecha DATE
+) RETURNS varchar(45) CHARSET utf8mb4
+    NO SQL
+BEGIN
+    RETURN CONCAT(
+        UPPER(LEFT(p_apellido_p,1)),
+        UPPER(LEFT(p_apellido_m,1)),
+        UPPER(LEFT(p_nombre,1)),
+        DATE_FORMAT(p_fecha,'%y%m%d'),
+        REPLACE(p_genero,'/',''),
+        SUBSTRING(REPLACE(UUID(),'-',''),1,12)
+    );
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_generar_edad` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_generar_edad`(p_min INT, p_max INT) RETURNS int
+    DETERMINISTIC
+BEGIN
+    RETURN FLOOR(RAND() * (p_max - p_min + 1)) + p_min;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_generar_genero` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_generar_genero`(p_genero VARCHAR(3)) RETURNS varchar(3) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+    
+    IF p_genero IS NOT NULL 
+       AND p_genero IN ('H','M','N/B') THEN
+        RETURN p_genero;
+    END IF;
+
+    
+    RETURN ELT(FLOOR(1 + RAND()*3),
+        'H',
+        'M',
+        'N/B'
+    );
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_generar_rfc_real` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_generar_rfc_real`(
+    p_nombre VARCHAR(50),
+    p_apellido_p VARCHAR(50),
+    p_apellido_m VARCHAR(50),
+    p_fecha DATE
+) RETURNS varchar(30) CHARSET utf8mb4
+    NO SQL
+BEGIN
+    DECLARE v_rfc_base VARCHAR(20);
+    DECLARE v_random VARCHAR(12);
+
+    SET v_rfc_base = CONCAT(
+        UPPER(LEFT(p_apellido_p,1)),
+        UPPER(LEFT(p_apellido_m,1)),
+        UPPER(LEFT(p_nombre,1)),
+        DATE_FORMAT(p_fecha,'%y%m%d')
+    );
+
+    SET v_random = UPPER(
+        SUBSTRING(REPLACE(UUID(),'-',''),1,12)
+    );
+
+    RETURN CONCAT(v_rfc_base, v_random);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_grupo_sanguineo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_grupo_sanguineo`() RETURNS varchar(3) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+    RETURN ELT(FLOOR(1 + RAND()*8),
+        'A+',
+        'A-',
+        'B+',
+        'B-',
+        'AB+',
+        'AB-',
+        'O+',
+        'O-'
+    );
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_nombre_real` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_nombre_real`() RETURNS varchar(100) CHARSET utf8mb4
+    READS SQL DATA
+BEGIN
+    DECLARE v_nombre1 VARCHAR(50);
+    DECLARE v_nombre2 VARCHAR(50);
+    DECLARE v_resultado VARCHAR(100);
+
+    
+    SELECT nombre INTO v_nombre1
+    FROM cat_nombres
+    ORDER BY RAND()
+    LIMIT 1;
+
+    
+    IF RAND() > 0.5 THEN
+
+        SELECT nombre INTO v_nombre2
+        FROM cat_nombres
+        WHERE nombre <> v_nombre1
+        ORDER BY RAND()
+        LIMIT 1;
+
+        SET v_resultado = CONCAT(v_nombre1, ' ', v_nombre2);
+    ELSE
+        SET v_resultado = v_nombre1;
+    END IF;
+
+    RETURN v_resultado;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_pais_origen` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_pais_origen`() RETURNS varchar(50) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+    RETURN ELT(FLOOR(1 + RAND()*12),
+        'Mexico',
+        'Colombia',
+        'Argentina',
+        'Chile',
+        'Peru',
+        'Venezuela',
+        'Estados Unidos',
+        'Canada',
+        'Brasil',
+        'España',
+        'China',
+        'Francia'
+    );
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_titulo_cortesia` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_titulo_cortesia`(p_genero VARCHAR(3)) RETURNS varchar(20) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+    IF p_genero = 'H' THEN
+        RETURN ELT(FLOOR(1 + RAND()*3),
+            'Sr.',
+            'Dr.',
+            'Ing.'
+        );
+
+    ELSEIF p_genero = 'M' THEN
+        RETURN ELT(FLOOR(1 + RAND()*3),
+            'Sra.',
+            'Dra.',
+            'Ing.'
+        );
+
+    ELSE
+        
+        RETURN ELT(FLOOR(1 + RAND()*2),
+            'Mx.',
+            'Ing.'
+        );
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_limpiar_datos` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_limpiar_datos`()
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        SELECT 'Error durante la limpieza. Se realiz� ROLLBACK.' AS mensaje;
+    END;
+
+    START TRANSACTION;
+
+    
+    SET FOREIGN_KEY_CHECKS = 0;
+
+    
+    DELETE FROM tbb_pacientes;
+    DELETE FROM tbb_personas_fisicas;
+    DELETE FROM tbb_personas;
+    DELETE FROM tbi_bitacora;
+
+    
+    ALTER TABLE tbb_pacientes AUTO_INCREMENT = 1;
+    ALTER TABLE tbb_personas_fisicas AUTO_INCREMENT = 1;
+    ALTER TABLE tbb_personas AUTO_INCREMENT = 1;
+    ALTER TABLE tbi_bitacora AUTO_INCREMENT = 1;
+
+    
+    SET FOREIGN_KEY_CHECKS = 1;
+
+    COMMIT;
+
+    SELECT 'Limpieza completada correctamente.' AS mensaje;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_poblar_pacientes` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_poblar_pacientes`(
+    vcantidad DECIMAL(10,2),
+    vgenero VARCHAR(3),
+    vedad_minima INT,
+    vedad_maxima INT,
+    vestatus_vida VARCHAR(20),
+    vtipo_edad VARCHAR(20)
+)
+BEGIN
+    DECLARE i INT DEFAULT 0;
+    DECLARE cantidad_entera INT;
+
+    DECLARE genero_final VARCHAR(3);
+    DECLARE estatus_final VARCHAR(20);
+
+    DECLARE edad_anios INT;
+    DECLARE edad_meses INT;
+    DECLARE edad_dias INT;
+
+    DECLARE edad_min INT DEFAULT 0;
+    DECLARE edad_max INT DEFAULT 120;
+
+    DECLARE tipo_edad_final VARCHAR(20);
+
+    -- ======================
+    -- VALIDACIÓN CANTIDAD
+    -- ======================
+    IF vcantidad IS NULL OR vcantidad <> FLOOR(vcantidad) OR vcantidad <= 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: La cantidad debe ser un entero mayor a 0';
+    END IF;
+
+    SET cantidad_entera = CAST(vcantidad AS UNSIGNED);
+
+    -- ======================
+    -- VALIDACIÓN GÉNERO
+    -- ======================
+    IF vgenero IS NOT NULL AND vgenero NOT IN ('H','M','N/B') THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: Género inválido';
+    END IF;
+
+    -- ======================
+    -- VALIDACIÓN EDADES
+    -- ======================
+    IF vedad_minima IS NOT NULL AND (vedad_minima < 0 OR vedad_minima > 120) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: Edad mínima inválida';
+    END IF;
+
+    IF vedad_maxima IS NOT NULL AND (vedad_maxima < 0 OR vedad_maxima > 120) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: Edad máxima inválida';
+    END IF;
+
+    IF vedad_minima IS NOT NULL AND vedad_maxima IS NOT NULL AND vedad_minima > vedad_maxima THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: La edad mínima no puede ser mayor a la máxima';
+    END IF;
+
+    -- ======================
+    -- VALIDACIÓN ESTATUS VIDA
+    -- ======================
+    IF vestatus_vida IS NOT NULL
+       AND vestatus_vida NOT IN ('Muerto','Desahuciado','Coma','Vegetativo','Vivo') THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: Estatus de vida inválido';
+    END IF;
+
+    -- ======================
+    -- VALIDACIÓN TIPO EDAD
+    -- ======================
+    IF vtipo_edad IS NOT NULL AND vtipo_edad NOT IN (
+        'Neonato','Infante','Niñez','Preadolecente','Adolescente',
+        'Joven','Adulto joven','Adulto','Adulto mayor'
+    ) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: Tipo de edad inválido';
+    END IF;
+
+    -- ======================
+    -- DEFINIR RANGO POR TIPO
+    -- ======================
+    IF vtipo_edad IS NOT NULL THEN
+        CASE vtipo_edad
+            WHEN 'Neonato' THEN SET edad_min = 0; SET edad_max = 0;
+            WHEN 'Infante' THEN SET edad_min = 0; SET edad_max = 4;
+            WHEN 'Niñez' THEN SET edad_min = 5; SET edad_max = 8;
+            WHEN 'Preadolecente' THEN SET edad_min = 9; SET edad_max = 12;
+            WHEN 'Adolescente' THEN SET edad_min = 13; SET edad_max = 18;
+            WHEN 'Joven' THEN SET edad_min = 19; SET edad_max = 22;
+            WHEN 'Adulto joven' THEN SET edad_min = 23; SET edad_max = 39;
+            WHEN 'Adulto' THEN SET edad_min = 40; SET edad_max = 60;
+            WHEN 'Adulto mayor' THEN SET edad_min = 61; SET edad_max = 120;
+        END CASE;
+
+        -- VALIDAR CONFLICTO CON EDADES
+        IF (vedad_minima IS NOT NULL AND vedad_minima > edad_max)
+           OR (vedad_maxima IS NOT NULL AND vedad_maxima < edad_min) THEN
+            SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Error: El tipo de edad no coincide con el rango de edades';
+        END IF;
+    END IF;
+
+    -- SI NO HAY TIPO, USAR EDADES MANUALES
+    IF vtipo_edad IS NULL THEN
+        SET edad_min = IFNULL(vedad_minima, 0);
+        SET edad_max = IFNULL(vedad_maxima, 120);
+    END IF;
+
+    -- ======================
+    -- MENSAJE SISTEMA
+    -- ======================
+    SELECT CONCAT(
+        'Validación exitosa. Se generarán ',
+        cantidad_entera,
+        ' pacientes simulados'
+    ) AS mensaje_sistema;
+
+    -- ======================
+    -- PROCESO
+    -- ======================
+    WHILE i < cantidad_entera DO
+
+        -- GÉNERO
+        IF vgenero IS NULL THEN
+            SET genero_final =
+                CASE FLOOR(RAND() * 3)
+                    WHEN 0 THEN 'H'
+                    WHEN 1 THEN 'M'
+                    ELSE 'N/B'
+                END;
+        ELSE
+            SET genero_final = vgenero;
+        END IF;
+
+        -- EDAD
+        SET edad_anios = FLOOR(RAND() * (edad_max - edad_min + 1)) + edad_min;
+        SET edad_meses = FLOOR(RAND() * 12);
+        SET edad_dias  = FLOOR(RAND() * 30);
+
+        -- AJUSTE NEONATO
+        IF vtipo_edad = 'Neonato' THEN
+            SET edad_meses = 0;
+            SET edad_dias  = FLOOR(RAND() * 29);
+        END IF;
+
+        -- CLASIFICACIÓN
+        IF vtipo_edad IS NOT NULL THEN
+            SET tipo_edad_final = vtipo_edad;
+        ELSE
+            SET tipo_edad_final =
+                CASE
+                    WHEN edad_anios = 0 AND edad_meses = 0 THEN 'Neonato'
+                    WHEN edad_anios BETWEEN 0 AND 4 THEN 'Infante'
+                    WHEN edad_anios BETWEEN 5 AND 8 THEN 'Niñez'
+                    WHEN edad_anios BETWEEN 9 AND 12 THEN 'Preadolecente'
+                    WHEN edad_anios BETWEEN 13 AND 18 THEN 'Adolescente'
+                    WHEN edad_anios BETWEEN 19 AND 22 THEN 'Joven'
+                    WHEN edad_anios BETWEEN 23 AND 39 THEN 'Adulto joven'
+                    WHEN edad_anios BETWEEN 40 AND 60 THEN 'Adulto'
+                    ELSE 'Adulto mayor'
+                END;
+        END IF;
+
+        -- ESTATUS VIDA
+        IF vestatus_vida IS NULL THEN
+            SET estatus_final =
+                CASE FLOOR(RAND() * 5)
+                    WHEN 0 THEN 'Muerto'
+                    WHEN 1 THEN 'Desahuciado'
+                    WHEN 2 THEN 'Coma'
+                    WHEN 3 THEN 'Vivo'
+                    ELSE 'Vegetativo'
+                END;
+        ELSE
+            SET estatus_final = vestatus_vida;
+        END IF;
+
+        -- SALIDA
+        SELECT CONCAT(
+            'Paciente ', i + 1,
+            ' | Género: ', genero_final,
+            ' | Edad: ',
+            edad_anios, ' años ',
+            edad_meses, ' meses ',
+            edad_dias, ' días',
+            ' | Tipo edad: ', tipo_edad_final,
+            ' | Estatus: ', estatus_final
+        ) AS proceso;
+
+        SET i = i + 1;
+    END WHILE;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_poblar_pacientes_goog` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_poblar_pacientes_goog`(
+    IN p_cantidad INT,
+    IN p_genero VARCHAR(3),
+    IN p_edad_min INT,
+    IN p_edad_max INT,
+    IN p_estatus_vida VARCHAR(20),
+    IN p_etapa_vida VARCHAR(50),
+    IN p_estatus_medico VARCHAR(50)
+)
+BEGIN
+    DECLARE i INT DEFAULT 0;
+    DECLARE batch_size INT DEFAULT 5000;
+
+    DECLARE v_id_persona INT;
+    DECLARE v_edad INT;
+    DECLARE v_fecha_nac DATE;
+    DECLARE v_genero VARCHAR(3);
+    DECLARE v_rfc VARCHAR(30);
+    DECLARE v_etapa VARCHAR(50);
+
+    DECLARE v_nombre VARCHAR(50);
+    DECLARE v_apellido_p VARCHAR(50);
+    DECLARE v_apellido_m VARCHAR(50);
+
+    
+    IF p_etapa_vida = 'Pediatrico' THEN
+        SET p_edad_min = 0;
+        SET p_edad_max = 17;
+    END IF;
+
+    SET p_edad_min = IFNULL(p_edad_min,0);
+    SET p_edad_max = IFNULL(p_edad_max,120);
+
+    START TRANSACTION;
+
+    WHILE i < p_cantidad DO
+
+        SET v_edad = fn_generar_edad(p_edad_min,p_edad_max);
+        SET v_fecha_nac = DATE_SUB(CURDATE(), INTERVAL v_edad YEAR);
+        SET v_genero = fn_generar_genero(p_genero);
+
+        SET v_nombre     = fn_nombre_real();
+        SET v_apellido_p = fn_apellido_real();
+        SET v_apellido_m = fn_apellido_real();
+
+        
+        SET v_etapa = fn_clasificar_etapa_vida(v_edad);
+
+        
+        IF p_etapa_vida IS NOT NULL THEN
+            SET v_etapa = p_etapa_vida;
+        END IF;
+
+        
+        IF v_edad >= 18 THEN
+            SET v_rfc = fn_generar_rfc_real(
+                v_nombre,
+                v_apellido_p,
+                v_apellido_m,
+                v_fecha_nac
+            );
+        ELSE
+            SET v_rfc = NULL;
+        END IF;
+
+        
+        INSERT INTO tbb_personas(
+            tipo,
+            rfc,
+            pais_origen,
+            fecha_actualizacion
+        )
+        VALUES(
+            'Fisica',
+            v_rfc,
+            fn_pais_origen(),
+            NOW()
+        );
+
+        SET v_id_persona = LAST_INSERT_ID();
+
+        
+        INSERT INTO tbb_personas_fisicas(
+            ID,
+            titulo_cortesia,
+            nombre,
+            primer_apellido,
+            segundo_apellido,
+            genero,
+            fecha_nacimiento,
+            curp,
+            grupo_sanguineo
+        )
+        VALUES(
+            v_id_persona,
+            fn_titulo_cortesia(v_genero),
+            v_nombre,
+            v_apellido_p,
+            v_apellido_m,
+            v_genero,
+            v_fecha_nac,
+            fn_generar_curp_real(
+                v_nombre,
+                v_apellido_p,
+                v_apellido_m,
+                v_genero,
+                v_fecha_nac
+            ),
+            fn_grupo_sanguineo()
+        );
+
+        
+        INSERT INTO tbb_pacientes(
+            ID,
+            estatus_medico,
+            estatus_vida,
+            fecha_ultima_citamedica
+        )
+        VALUES(
+            v_id_persona,
+            fn_estatus_medico(p_estatus_medico),
+            fn_estatus_vida(p_estatus_vida),
+            fn_fecha_ultima_cita()
+        );
+
+        SET i = i + 1;
+
+        IF i % batch_size = 0 THEN
+            COMMIT;
+            START TRANSACTION;
+        END IF;
+
+    END WHILE;
+
+    COMMIT;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Final view structure for view `vw_grants_por_roles`
@@ -742,6 +1942,74 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `vw_reporte_privilegios`
+--
+
+/*!50001 DROP VIEW IF EXISTS `vw_reporte_privilegios`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_reporte_privilegios` AS select `reporte`.`mensaje` AS `mensaje` from (select '-- GERENCIA --' AS `mensaje` union all select concat('GRANT ',group_concat(`tp`.`PRIVILEGE_TYPE` order by `tp`.`PRIVILEGE_TYPE` ASC separator ', '),' ON ',`tp`.`TABLE_SCHEMA`,'.',`tp`.`TABLE_NAME`,' TO ',`tp`.`GRANTEE`,';') AS `CONCAT(
+        'GRANT ',
+        GROUP_CONCAT(tp.PRIVILEGE_TYPE ORDER BY tp.PRIVILEGE_TYPE SEPARATOR ', '),
+        ' ON ',
+        tp.TABLE_SCHEMA, '.', tp.TABLE_NAME,
+        ' TO ',
+        tp.GRANTEE, ';'
+    )` from `information_schema`.`TABLE_PRIVILEGES` `tp` where ((`tp`.`TABLE_SCHEMA` = 'hospital_230142') and (`tp`.`GRANTEE` like '\'ge_user\'@%')) group by `tp`.`GRANTEE`,`tp`.`TABLE_SCHEMA`,`tp`.`TABLE_NAME` union all select '-- RECURSOS HUMANOS --' AS `-- RECURSOS HUMANOS --` union all select concat('GRANT ',group_concat(`tp`.`PRIVILEGE_TYPE` order by `tp`.`PRIVILEGE_TYPE` ASC separator ', '),' ON ',`tp`.`TABLE_SCHEMA`,'.',`tp`.`TABLE_NAME`,' TO ',`tp`.`GRANTEE`,';') AS `CONCAT(
+        'GRANT ',
+        GROUP_CONCAT(tp.PRIVILEGE_TYPE ORDER BY tp.PRIVILEGE_TYPE SEPARATOR ', '),
+        ' ON ',
+        tp.TABLE_SCHEMA, '.', tp.TABLE_NAME,
+        ' TO ',
+        tp.GRANTEE, ';'
+    )` from `information_schema`.`TABLE_PRIVILEGES` `tp` where ((`tp`.`TABLE_SCHEMA` = 'hospital_230142') and (`tp`.`GRANTEE` like '\'hr_user\'@%')) group by `tp`.`GRANTEE`,`tp`.`TABLE_SCHEMA`,`tp`.`TABLE_NAME` union all select '-- RECURSOS MATERIALES --' AS `-- RECURSOS MATERIALES --` union all select concat('GRANT ',group_concat(`tp`.`PRIVILEGE_TYPE` order by `tp`.`PRIVILEGE_TYPE` ASC separator ', '),' ON ',`tp`.`TABLE_SCHEMA`,'.',`tp`.`TABLE_NAME`,' TO ',`tp`.`GRANTEE`,';') AS `CONCAT(
+        'GRANT ',
+        GROUP_CONCAT(tp.PRIVILEGE_TYPE ORDER BY tp.PRIVILEGE_TYPE SEPARATOR ', '),
+        ' ON ',
+        tp.TABLE_SCHEMA, '.', tp.TABLE_NAME,
+        ' TO ',
+        tp.GRANTEE, ';'
+    )` from `information_schema`.`TABLE_PRIVILEGES` `tp` where ((`tp`.`TABLE_SCHEMA` = 'hospital_230142') and (`tp`.`GRANTEE` like '\'mr_user\'@%')) group by `tp`.`GRANTEE`,`tp`.`TABLE_SCHEMA`,`tp`.`TABLE_NAME` union all select '-- REGISTROS MÉDICOS --' AS `-- REGISTROS MÉDICOS --` union all select concat('GRANT ',group_concat(`tp`.`PRIVILEGE_TYPE` order by `tp`.`PRIVILEGE_TYPE` ASC separator ', '),' ON ',`tp`.`TABLE_SCHEMA`,'.',`tp`.`TABLE_NAME`,' TO ',`tp`.`GRANTEE`,';') AS `CONCAT(
+        'GRANT ',
+        GROUP_CONCAT(tp.PRIVILEGE_TYPE ORDER BY tp.PRIVILEGE_TYPE SEPARATOR ', '),
+        ' ON ',
+        tp.TABLE_SCHEMA, '.', tp.TABLE_NAME,
+        ' TO ',
+        tp.GRANTEE, ';'
+    )` from `information_schema`.`TABLE_PRIVILEGES` `tp` where ((`tp`.`TABLE_SCHEMA` = 'hospital_230142') and (`tp`.`GRANTEE` like '\'md_user\'@%')) group by `tp`.`GRANTEE`,`tp`.`TABLE_SCHEMA`,`tp`.`TABLE_NAME` union all select '-- SERVICIOS MÉDICOS --' AS `-- SERVICIOS MÉDICOS --` union all select concat('GRANT ',group_concat(`tp`.`PRIVILEGE_TYPE` order by `tp`.`PRIVILEGE_TYPE` ASC separator ', '),' ON ',`tp`.`TABLE_SCHEMA`,'.',`tp`.`TABLE_NAME`,' TO ',`tp`.`GRANTEE`,';') AS `CONCAT(
+        'GRANT ',
+        GROUP_CONCAT(tp.PRIVILEGE_TYPE ORDER BY tp.PRIVILEGE_TYPE SEPARATOR ', '),
+        ' ON ',
+        tp.TABLE_SCHEMA, '.', tp.TABLE_NAME,
+        ' TO ',
+        tp.GRANTEE, ';'
+    )` from `information_schema`.`TABLE_PRIVILEGES` `tp` where ((`tp`.`TABLE_SCHEMA` = 'hospital_230142') and (`tp`.`GRANTEE` like '\'ms_user\'@%')) group by `tp`.`GRANTEE`,`tp`.`TABLE_SCHEMA`,`tp`.`TABLE_NAME` union all select '-- FARMACIA --' AS `-- FARMACIA --` union all select concat('GRANT ',group_concat(`tp`.`PRIVILEGE_TYPE` order by `tp`.`PRIVILEGE_TYPE` ASC separator ', '),' ON ',`tp`.`TABLE_SCHEMA`,'.',`tp`.`TABLE_NAME`,' TO ',`tp`.`GRANTEE`,';') AS `CONCAT(
+        'GRANT ',
+        GROUP_CONCAT(tp.PRIVILEGE_TYPE ORDER BY tp.PRIVILEGE_TYPE SEPARATOR ', '),
+        ' ON ',
+        tp.TABLE_SCHEMA, '.', tp.TABLE_NAME,
+        ' TO ',
+        tp.GRANTEE, ';'
+    )` from `information_schema`.`TABLE_PRIVILEGES` `tp` where ((`tp`.`TABLE_SCHEMA` = 'hospital_230142') and (`tp`.`GRANTEE` like '\'ph_user\'@%')) group by `tp`.`GRANTEE`,`tp`.`TABLE_SCHEMA`,`tp`.`TABLE_NAME` union all select '-- DEVELOPER --' AS `-- DEVELOPER --` union all select concat('GRANT ',group_concat(`sp`.`PRIVILEGE_TYPE` order by `sp`.`PRIVILEGE_TYPE` ASC separator ', '),' ON ',`sp`.`TABLE_SCHEMA`,'.* TO ',`sp`.`GRANTEE`,';') AS `CONCAT(
+        'GRANT ',
+        GROUP_CONCAT(sp.PRIVILEGE_TYPE ORDER BY sp.PRIVILEGE_TYPE SEPARATOR ', '),
+        ' ON ',
+        sp.TABLE_SCHEMA,
+        '.* TO ',
+        sp.GRANTEE,
+        ';'
+    )` from `information_schema`.`SCHEMA_PRIVILEGES` `sp` where ((`sp`.`TABLE_SCHEMA` = 'hospital_230142') and (`sp`.`GRANTEE` like '\'developer\'@%')) group by `sp`.`GRANTEE`,`sp`.`TABLE_SCHEMA`) `reporte` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `vw_roles_usuarios`
 --
 
@@ -751,10 +2019,10 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
 /*!50001 SET character_set_client      = utf8mb4 */;
 /*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `vw_roles_usuarios` AS select 1 AS `usuario`,1 AS `host`,1 AS `roles_asignados` */;
+/*!50001 VIEW `vw_roles_usuarios` AS select `u`.`User` AS `usuario`,`u`.`Host` AS `host`,ifnull(group_concat(concat(`r`.`TO_USER`,'@',convert(`r`.`TO_HOST` using utf8mb3)) order by `r`.`TO_USER` ASC separator ','),'sin roles') AS `roles_asignados` from (`mysql`.`user` `u` left join `mysql`.`role_edges` `r` on(((`u`.`User` = `r`.`FROM_USER`) and (`u`.`Host` = `r`.`FROM_HOST`)))) where ((`u`.`User` like '%user%') or (`u`.`User` = 'developer')) group by `u`.`User`,`u`.`Host` order by `u`.`User`,`u`.`Host` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -768,4 +2036,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-02-17 15:07:55
+-- Dump completed on 2026-02-19 14:35:56

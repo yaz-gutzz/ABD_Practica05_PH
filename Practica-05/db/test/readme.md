@@ -74,7 +74,6 @@ CALL sp_poblar_pacientes_goog(150, 'M', NULL, NULL, NULL, NULL, NULL);
 
 CALL sp_poblar_pacientes_goog(340, 'H', 20, 30, NULL, NULL, NULL);
 
-
 ![Test 08](assets/test08.png)
 
 ---

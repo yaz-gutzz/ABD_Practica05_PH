@@ -7,10 +7,6 @@ Prueba de Naturaleza
 Validar que el procedimiento permita generar
 208 pacientes clasificados como pediátricos.
 
-## Preparación del Entorno
-Se limpiaron las tablas antes de la ejecución
-para garantizar independencia de la prueba.
-
 ## Script Ejecutado
 
 CALL sp_poblar_pacientes_goog(
@@ -36,9 +32,6 @@ CALL sp_poblar_pacientes_goog(
 La prueba fue ejecutada correctamente.
 Todos los pacientes generados
 pertenecen al rango pediátrico.
-
-## Evidencia
-Ver archivo `test15.png`.
 
 ## Observaciones
 La lógica interna del procedimiento

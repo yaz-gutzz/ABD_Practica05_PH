@@ -11,7 +11,7 @@ Los backups están organizados según su propósito, incluyendo:
 
 ---
 
-## 📌 ¿Qué es un Backup?
+##  ¿Qué es un Backup?
 
 Un **backup** es una copia de seguridad de la base de datos que permite restaurar información en caso de pérdida, corrupción o fallos del sistema.
 
@@ -46,7 +46,7 @@ Un **backup** es una copia de seguridad de la base de datos que permite restaura
 
 ##  Tipos de Backups Incluidos
 
-### 🔹 Respaldo Estructural
+###  Respaldo Estructural
 Contiene:
 - Creación de base de datos
 - Tablas
@@ -54,11 +54,13 @@ Contiene:
 - Procedimientos almacenados
 - Triggers
 
-### 🔹 Respaldo Funcional
-Incluye:
-- Inserciones de datos
-- Configuraciones iniciales
-- Roles y privilegios
+---
 
-### 🔹 Respaldo Post-Población
+###  Respaldo Post-Población
 Se genera después de ejecutar procedimientos de inserción masiva o pruebas.
+
+##  Enlace de Descarga
+
+Los respaldos también se encuentran disponibles en Google Drive:
+
+[Descargar respaldos desde Google Drive](https://drive.google.com/drive/folders/1jPpuI9sExv1erd43JGo-YND3SWoY7Gtw?usp=drive_link)

@@ -8,10 +8,6 @@ Validar que el procedimiento permita generar
 107 pacientes con estatus médico
 "Cuidados Paliativos".
 
-## Preparación del Entorno
-Se limpiaron las tablas antes de la ejecución
-para garantizar independencia de la prueba.
-
 ## Script Ejecutado
 
 CALL sp_poblar_pacientes_goog(
@@ -36,9 +32,6 @@ CALL sp_poblar_pacientes_goog(
 ## Resultado Obtenido
 La prueba fue ejecutada y validada
 según los criterios establecidos.
-
-## Evidencia
-Ver archivo `test14.png`.
 
 ## Observaciones
 Se verificó que el procedimiento

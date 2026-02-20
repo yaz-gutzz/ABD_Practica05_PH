@@ -7,10 +7,6 @@ Prueba de Volumen
 Validar la generación dinámica de 100 pacientes
 mediante el procedimiento `sp_poblar_pacientes_goog`.
 
-## Preparación del Entorno
-Se limpiaron las tablas para garantizar independencia
-de la prueba.
-
 ## Script Ejecutado
 
 CALL sp_poblar_pacientes_goog(
@@ -34,8 +30,6 @@ SELECT COUNT(*) FROM tbb_pacientes;
 La prueba fue exitosa.
 Se insertaron 100 pacientes sin errores.
 
-## Evidencia
-Ver archivo `test03.png`.
 
 ## Observaciones
 El procedimiento respondió correctamente

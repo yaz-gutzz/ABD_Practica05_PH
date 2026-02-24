@@ -1,6 +1,11 @@
 
 # 📊 Dashboard Hospital (Navicat BI)
 
+## Visualización gráficas
+| Gráfica sin dispersión | Gráfica con dispersión  |
+|---|-------|
+| ![Before](graphBefore.jpeg) | ![After](Dashboard.png) | 
+
 ## 📌 Descripción
 
 Se desarrolló un Dashboard en **Navicat Premium 17 (Módulo BI)** utilizando la base de datos `hospital_`, previamente poblada con **1,000,000 de registros** mediante procedimientos almacenados.

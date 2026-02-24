@@ -152,5 +152,6 @@ Se validó la integridad relacional entre:
 - tbb_personas_fisicas
 - tbb_pacientes
 
-  ![integracion](assets/Modelo Reverso.png)
+  ![integracion](assets/modelo.png)
+
 

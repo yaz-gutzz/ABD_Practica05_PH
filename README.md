@@ -349,11 +349,12 @@ El sistema está **listo para producción** y puede escalar a millones de regist
 
 ## 👥 Equipo de Desarrollo
 
-- **Yazmin** - Rama: `Practica05-Yazmin`
-- **Obed** - Rama: `Practica05-Obed`
-- **Citlalli** - Rama: `Practica05-Citlalli`
-- **Michelle** - Rama: `Practica05-Michelle`
-
+| Nombre    | Rama                    | Usuario GitHub                                     |
+|-----------|-------------------------|---------------------------------------------------|
+| **Yazmin**  | `Practica05-Yazmin`     | [@yaz-gutzz](https://github.com/yaz-gutzz) |
+| **Obed**    | `Practica05-Obed`       | [@ObedGuzmanGuz](https://github.com/ObedGuzmanGuz)     |
+| **Citlalli**| `Practica05-Citlalli`   | [@KouDionicio](https://github.com/KouDioniciob) |
+| **Michelle**| `Practica05-Michelle`   | [@Ktmich2095](https://github.com/Ktmich2095) |
 ---
 
 ## 📝 Notas Importantes
@@ -375,8 +376,5 @@ El sistema está **listo para producción** y puede escalar a millones de regist
 
 ---
 
-**Última actualización:** Febrero 16, 2026  
+**Última actualización:** Febrero 24, 2026  
 **Estado del Proyecto:** ✅ Completado y Operativo
-
-
-    

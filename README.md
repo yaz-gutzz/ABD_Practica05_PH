@@ -50,7 +50,6 @@ El sistema ha sido sometido a **pruebas exhaustivas** de volumen (hasta 1,000,00
 
 ---
 
-## 🏗 Modelo Relacional
 
 ## 🏗 Modelo Relacional
 
@@ -353,7 +352,7 @@ El sistema está **listo para producción** y puede escalar a millones de regist
 |-----------|-------------------------|---------------------------------------------------|
 | **Yazmin**  | `Practica05-Yazmin`     | [@yaz-gutzz](https://github.com/yaz-gutzz) |
 | **Obed**    | `Practica05-Obed`       | [@ObedGuzmanGuz](https://github.com/ObedGuzmanGuz)     |
-| **Citlalli**| `Practica05-Citlalli`   | [@KouDionicio](https://github.com/KouDioniciob) |
+| **Citlalli**| `Practica05-Citlalli`   | [@KouDionicio](https://github.com/KouDionicio) |
 | **Michelle**| `Practica05-Michelle`   | [@Ktmich2095](https://github.com/Ktmich2095) |
 ---
 
